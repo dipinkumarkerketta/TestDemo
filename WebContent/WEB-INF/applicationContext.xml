@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx 
+            http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop.xsd"
+	>
+
+    <!-- Activates scanning of @Autowired -->
+<!-- 	
+
+    Activates scanning of @Repository and @Service
+	<context:component-scan base-package="com.test" />
+	
+		bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" /
+	
+	
+		The bootstrap database password encoder bean. It is needed to encode
+		passwords in database.
+	
+	
+		bean class="com.example.template.security.DatabasePasswordSecurerBean"
+		lazy-init="false" init-method="secureDatabase"
+		depends-on="dataSource"> <property name="dataSource" ref="dataSource"
+		/> </bean
+	
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:db.properties</value>
+		</property>
+	</bean>
+
+	DataSource for main schema
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${db.driverClassName}" />
+		<property name="jdbcUrl" value="${db.url}" />
+		<property name="user" value="${db.username1}" />
+		<property name="password" value="${db.password1}" />
+		<property name="acquireIncrement" value="10" />
+		<property name="minPoolSize" value="30" />
+		<property name="maxPoolSize" value="50" />
+		<property name="maxIdleTime" value="600" />
+	</bean>
+	DataSource for Prospect schema 
+	<bean id="dataSourceProspect" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${db.driverClassName}" />
+		<property name="jdbcUrl" value="${db.url}" />
+		<property name="user" value="${db.username2}" />
+		<property name="password" value="${db.password2}" />
+		<property name="acquireIncrement" value="2" />
+		<property name="minPoolSize" value="30" />
+		<property name="maxPoolSize" value="50" />
+		<property name="maxIdleTime" value="600" />
+	</bean>
+
+	 DataSource for Master schema 
+	<bean id="dataSourceMaster" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${db.driverClassName}" />
+		<property name="jdbcUrl" value="${db.url}" />
+		<property name="user" value="${db.username3}" />
+		<property name="password" value="${db.password3}" />
+		<property name="acquireIncrement" value="2" />
+		<property name="minPoolSize" value="30" />
+		<property name="maxPoolSize" value="50" />
+		<property name="maxIdleTime" value="600" />
+	</bean>
+
+	Hibernate SessionFactory1
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect 
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory 
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+			</props>
+		</property>
+		<property name="packagesToScan" value="com.test.entity"></property>
+	</bean>
+	Hibernate SessionFactory prospect
+	<bean id="sessionFactoryProspect"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceProspect"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect 
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory 
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+			</props>
+		</property>
+		<property name="packagesToScan" value="com.qc.starter.entity"></property>
+	</bean>
+	 session factory masters 
+	<bean id="sessionFactoryMaster"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceMaster"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect 
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory 
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+			</props>
+		</property>
+		<property name="packagesToScan" value="com.qc.starter.entity"></property>
+	</bean>
+	transaction manager main
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	transaction manager prospect
+	<bean id="transactionManagerProspect"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryProspect" />
+	</bean>
+
+	 transaction manager Master 
+	<bean id="transactionManagerMaster"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryMaster" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" /> -->
+</beans>

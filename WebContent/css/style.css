@@ -1,0 +1,211 @@
+@import url('../fonts/stylesheet.css');
+p
+{
+	font-family: 'PN_L';
+	font-size: 18px;
+}
+#navbar
+{
+	width: 100%;
+	background: #fff;
+	padding:0;
+    position:static;
+    height:8em;
+	z-index: 50;
+	}
+	.contact-header
+	{
+	width:100%;
+	position: relative;
+	background-color: #000000!important;
+	}
+
+	.contact-header ul li
+	{
+	list-style-type: none;
+	float: left;
+	position: relative;
+	color: #fff!important;
+	padding: 1em;
+	}
+	.contact-header ul li i:hover
+	{
+	color:rgb(124,252,0);
+	}
+	.contact-header ul li span
+	{
+	padding-left:10px;
+	font-family: 'PN_L';
+	}
+
+.main-nav
+{
+	font-size: 16px;
+	font-family: 'PN_L';
+	border:1px solid;
+	height: 4em;
+	background: #6FA8A9!important;
+	}
+.main-nav ul
+{
+    list-style: none;
+   float:right;
+    padding:0;
+}
+.main-nav ul li {
+    float: left;
+    padding:5px 1em;
+    position: relative;
+}
+.main-nav ul li a {
+	color: #fff!important;
+    text-decoration: none;
+   font-family: 'PN_B';
+
+}
+#navbar .main-nav li a:hover,#navbar.main-nav li.active a,#navbar .nav li.active a:hover{
+	color:#fff!important;
+	background:#53b6eb;
+	border-radius: 5px;
+	position: relative;
+}
+
+
+footer
+{
+	padding: 20px 0px 20px 0px;
+	position: relative;
+	background: #303236!important;
+
+}
+.footerdiv span
+{
+	color:#fff!important;
+	  font-family: 'PN_R';
+}
+
+.registraion
+{
+margin-top:5em;
+position: relative;
+}
+.registraion h5
+{
+	font-family: 'PN_R';
+    font-size: 2em;
+    text-transform: uppercase;
+    display: block;
+}
+.registraion form
+{
+	margin-top: 4em;
+    padding-left: 25em;
+    padding-right: 0em;
+}
+.formfroup1
+{
+	padding-bottom:2.8em;
+	position: relative;
+}
+.login a
+{
+	color:#ff8f66;
+	font-family: 'PN_L';
+	text-decoration: none;
+
+}
+.login a i
+{
+		padding-right:5px;
+}
+.login a:hover
+{
+	color:#23527C!important;
+}
+.forgetpass
+{
+	position: relative;
+}
+.forgetpass span
+{
+		font-family: 'PN_B';
+		font-size: 1.5em;
+		text-transform: uppercase;
+}
+.forgetpass .form-group
+{
+	padding-top: 2em;
+	padding-left: 12em;
+}
+.forgetpass button
+{
+	 text-align: center;
+    margin: 2.5em 26em;
+    padding: .6em 4em;
+	position: relative;
+}
+.admin-header
+{
+	position: relative;
+	width:100%;
+}
+.admin-header .nav
+{
+	background: #2C3E50!important;
+}
+.admin-header ul
+{
+	padding:4em 4em;
+}
+.admin-header ul li
+{
+	list-style-type: none;
+	padding: 10px 0;
+}
+.admin-header ul li i 
+{
+	padding-right:2em;
+	font-size: 1em;
+	color:#DEE0E3!important;
+}
+.admin-header a:hover,.admin-header i:hover,.admin-header li:hover
+{
+	color:#fff!important;
+}
+.facebook-sign
+{
+    background: #3B5998;
+    border-color: #3B5998;
+    border-radius: 6px;
+    padding: 1em 2em;
+}
+.facebook-sign i
+{
+	    font-size: 26px;
+    color: #fff!important;
+    padding-right: 24px;
+}
+.facebook-sign span
+{
+   color: #fff!important;
+    position: relative;
+    font-size: 1.2em;
+    font-family: 'PN_R';
+}
+.hr-line
+{
+	border: 1.8px solid #f5f5f5;
+    position: relative;
+}
+.question-menu
+{
+	    margin-left: 23em;
+    position: absolute;
+    border: 1px solid;
+}
+.main-content
+{
+	    padding-left: 23em;
+       padding-top: 5em;
+}
+
